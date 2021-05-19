@@ -39,20 +39,25 @@ def escolheLetra():
   else:
     return ['O', 'X']
 
+difiMinMax = 0
+
 def escolhaDificuldade():
     dificuldade = -1
-    while not (dificuldade == 0 or dificuldade == 1 or dificuldade == 2 ):
+    while not (dificuldade == 2 or dificuldade == 5 or dificuldade == 10 ):
         print('Escolha a dificuldade colocando 1 pra facil, 2 pra médio e 3 pra dificil')
         escolha = input('')
 
         if (escolha == '1'):
-            dificuldade = 0
+            dificuldade = 2
+            difiMinMax = 0
 
         if (escolha == '2'):
-            dificuldade = 1
+            dificuldade = 5
+            difiMinMax = 1
 
         if (escolha == '3'):
-            dificuldade = 2
+            dificuldade = 10
+            difiMinMax = 2
 
     return dificuldade
 
@@ -200,7 +205,7 @@ def pegaMovimentoComp(tabuleiro, vez, compLetra, dificuldade):
   
   #Começamos com MinMAx
   #Primeiro checamos se podemos ganhar no próximo movimento
-  for i in range(1, 10):
+  for i in range(1, dificuldade):
     copia = copiaTabuleiro(tabuleiro)
     if espacoLivre(copia, i):
       fazMovimento(copia, compLetra, i)
@@ -208,7 +213,7 @@ def pegaMovimentoComp(tabuleiro, vez, compLetra, dificuldade):
         return i
   
   #Checa se o jogador pode vencer no próximo movimento e bloqueia
-  for i in range(1, 10):
+  for i in range(1, dificuldade):
     copia = copiaTabuleiro(tabuleiro)
     if espacoLivre(copia, i):
       fazMovimento(copia, jogadorLetra, i)
@@ -219,7 +224,7 @@ def pegaMovimentoComp(tabuleiro, vez, compLetra, dificuldade):
 
   for movimento in possiveisOp:
     fazMovimento(tabuleiro, compLetra, movimento)
-    val = minMaxAlphaBeta(tabuleiro, compLetra, jogadorLetra, dificuldade * -1, dificuldade)
+    val = minMaxAlphaBeta(tabuleiro, compLetra, jogadorLetra,  (difiMinMax * -1), difiMinMax)
     fazMovimento(tabuleiro, '', movimento)
 
     if val > a:
@@ -233,7 +238,7 @@ def pegaMovimentoComp(tabuleiro, vez, compLetra, dificuldade):
 print("     Trabalho 2 de IA      ")
 print(" Busca Competitiva MinMax  ")
 print("      Jogo da Velha        ")
-print("Aluno: Ricardo Alves")
+print("Grupo: Lucas Paulo, Ricardo")
 
 jogar = True
 

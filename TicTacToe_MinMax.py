@@ -43,6 +43,7 @@ difiMinMax = 0
 
 def escolhaDificuldade():
     dificuldade = -1
+    global difiMinMax
     while not (dificuldade == 2 or dificuldade == 5 or dificuldade == 10 ):
         print('Escolha a dificuldade colocando 1 pra facil, 2 pra médio e 3 pra dificil')
         escolha = input('')

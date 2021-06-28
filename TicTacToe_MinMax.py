@@ -239,7 +239,6 @@ def pegaMovimentoComp(tabuleiro, vez, compLetra, dificuldade):
 print("     Trabalho 2 de IA      ")
 print(" Busca Competitiva MinMax  ")
 print("      Jogo da Velha        ")
-print("Grupo: Lucas Paulo, Ricardo")
 
 jogar = True
 
